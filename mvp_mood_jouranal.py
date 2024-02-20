@@ -83,8 +83,12 @@ def compare_entry_with_last():
         new_record_date = all_records[length - 1]["date"]
         last_record_date = all_records[length - 2]["date"]
         
-        date1 = datetime.datetime.strptime(new_record_date, "%H:%M-%d-%m-%y")
-        date2 = datetime.datetime.strptime(last_record_date, "%H:%M-%d-%m-%y")
+
+
+
+
+        date1 = te.convert_to_DaterTime(new_record_date)
+        date2 = te.convert_to_DaterTime(last_record_date)
         if date1.weekday() == date2.weekday():
             return True
         return False

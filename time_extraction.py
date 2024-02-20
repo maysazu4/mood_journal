@@ -26,4 +26,8 @@ def timeInText(textv):
     except:
         return timeInText(text[1:])
 
+def convert_to_DaterTime(time):
+    dt = datetime.strptime(time, "%H:%M-%d-%m-%Y")
+    print(dt)
 print(timeInText("cw6:23-12-10-2012wernirf"))
+convert_to_DaterTime("06:23-12-10-2012")
