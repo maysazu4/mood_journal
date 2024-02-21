@@ -16,6 +16,7 @@ def emotion(sentences):
 "Contentment":["Satisfied","Pleased","Gratified","Content","Fulfilled"],
 "Embarrassment":["Ashamed","Humiliated","Blushing","Self-conscious","Mortified"],
 }
+        moods = []
     
         for key, value in emotions_words.items():
             emotions_words[key] = [word.lower() for word in value]
@@ -34,15 +35,18 @@ def emotion(sentences):
                             emotions_counter[emotion] = 1
 
         for emotion1 in emotions_counter.keys():
-             print(emotion1 + " : " + str(emotions_counter[emotion1]))
+            #  print(emotion1 + " : " + str(emotions_counter[emotion1]))
+             moods.append(emotion1)
+        return moods
+
 
     # emotions_percents = {}
     # for emotion1 in emotions_counter.keys():
     #     print(emotion1)
     #     emotions_percents[emotion1]= emotions_counter[emotion1] /emotions_sum *100/100
     #     print(emotion1 + " : " + str(emotions_percents[emotion1]))
-sent1 = ["i feel happy and Unhappy in the same time","kas askj Scared askl"]
-emotion(sent1)
+# sent1 = ["i feel happy and Unhappy in the same time","kas askj Scared askl"]
+# emotion(sent1)
 
 
 

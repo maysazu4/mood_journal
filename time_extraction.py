@@ -1,7 +1,8 @@
 from datetime import datetime
 
 #this function takes a string and returns True as text if the string is a valid time in the format "hh:mm-dd-mm-yyyy" otherwise it returns the time in the wanted format
-def timeInText(text):
+def timeInText(textv):
+    text = textv.strip()
     if len(text) < 16:
         current_time = datetime.now()
         hour = str(current_time.hour)
@@ -10,7 +11,7 @@ def timeInText(text):
         month = str(current_time.month)
         year = str(current_time.year)
         return hour+":"+minutes+"-"+day+"-"+month+"-"+year
-    sliced =text[0:16]
+    sliced =text[1:18]
     try:
         hourandminutes, day, month, year = sliced.split('-')
         hour,minutes = hourandminutes.split(':')
@@ -19,9 +20,9 @@ def timeInText(text):
         day = int(day)
         month = int(month)
         year = int(year)
-        if(hour > 23 or hour<0 or minutes > 59 or minutes < 0 or day > 31 or day < 1 or month > 12 or month < 1 or year < 0):
+        if(hour > 23 or hour<0 or minutes > 59 or minutes < 0 or day > 31 or day < 1 or month > 12 or month < 1 or year < 1000):
             timeInText(text[1:])
-        return "True"
+        return sliced
     except:
         return timeInText(text[1:])
 

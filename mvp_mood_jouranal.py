@@ -1,7 +1,8 @@
 # importing json library
 from tinydb import TinyDB, Query
-import time
+import time_extraction as te
 import emotions_in_percent as eip
+import datetime
 
 def take_input():
     get_input = input("Tell about your day: ")
@@ -43,12 +44,17 @@ def add_record(user_id, note_id, mood, date):
     records_db.update({'_id': doc_id}, doc_ids=[doc_id])
     return doc_id
 
-# def save_note_details_to_DB(user_id):
-#     note = take_input()
-#     note_id = add_note(user_id, note)
-#     note_moods = eip(note, eip.emotions_words)
-#     for mood in note_moods:
-#         add_record(user_id, note_id, mood, time.time())
+def save_note_details_to_DB(user_id):
+    note = take_input()
+    note_id = add_note(user_id, note)
+    note_moods = eip.emotion([note])
+    print(note_moods)
+    for mood in note_moods:
+        note_time = te.timeInText(note)
+        add_record(user_id, note_id, mood, note_time)
+
+save_note_details_to_DB(0)
+
 
 
 
@@ -56,10 +62,10 @@ def add_record(user_id, note_id, mood, date):
 # Fetch all documents from each database
 all_users = users_db.all()
 all_notes = notes_db.all()
-all_tasks = records_db.all()
+all_records = records_db.all()
 
 print("Users:", all_users)
 print("Notes:", all_notes)
-print("Tasks:", all_tasks)
+print("Records:", all_records)
 
 
