@@ -20,9 +20,27 @@ def mood_journal(note):
 
 # Create users Db
 users_db = TinyDB('users_db.json')
+notes_db = TinyDB('notes_db.json')
+records_db = TinyDB('records_db.json')
 
 # write users to db
-def add_user_json(user):
-    users_db.insert(user)
+def add_user(name):
+    users_db.insert({name})
 
-# Note = Query()
+# write notes to db
+def add_note(user_id, note):
+    notes_db.insert({user_id, note})
+
+# write records to db
+def add_record(user_id, note_id, mood, date):
+    records_db.insert({user_id, note_id, mood, date})
+
+
+# Fetch all documents from each database
+all_users = db_users.all()
+all_notes = db_notes.all()
+all_tasks = db_tasks.all()
+
+print("Users:", all_users)
+print("Notes:", all_notes)
+print("Tasks:", all_tasks)
