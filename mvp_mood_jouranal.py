@@ -37,9 +37,9 @@ def add_record(user_id, note_id, mood, date):
 
 
 # Fetch all documents from each database
-all_users = db_users.all()
-all_notes = db_notes.all()
-all_tasks = db_tasks.all()
+all_users = users_db.all()
+all_notes = notes_db.all()
+all_tasks = records_db.all()
 
 print("Users:", all_users)
 print("Notes:", all_notes)
