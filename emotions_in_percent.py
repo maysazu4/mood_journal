@@ -19,6 +19,7 @@ def emotion(sent,emotions):
     emotions_sum = 0    
     sent_splited = []
     sent_splited= sent.split(" ")
+    moods = []
     for word in sent_splited:
         for emotion in emotions.keys():
             if word.lower() in emotions[emotion]:
