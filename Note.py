@@ -11,3 +11,6 @@ class Note:
 
     def get_record(self):
         return self.date, self.text
+
+    def update_text(self, text):
+        self.text = text
