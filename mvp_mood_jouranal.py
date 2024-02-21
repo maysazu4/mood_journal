@@ -18,6 +18,7 @@ def mood_journal(note):
     with open('notes.txt', 'a') as file:
         file.write(str(note) + '\n')
 
+
 # Create users Db
 users_db = TinyDB('users_db.json')
 notes_db = TinyDB('notes_db.json')
@@ -44,3 +45,5 @@ all_tasks = db_tasks.all()
 print("Users:", all_users)
 print("Notes:", all_notes)
 print("Tasks:", all_tasks)
+
+
