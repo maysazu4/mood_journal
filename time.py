@@ -1,5 +1,6 @@
 from datetime import datetime
 
+#this function takes a string and returns True as text if the string is a valid time in the format "hh:mm-dd-mm-yyyy" otherwise it returns the time in the wanted format
 def timeInText(text):
     if len(text) < 16:
         current_time = datetime.now()
@@ -20,8 +21,8 @@ def timeInText(text):
         year = int(year)
         if(hour > 23 or hour<0 or minutes > 59 or minutes < 0 or day > 31 or day < 1 or month > 12 or month < 1 or year < 0):
             timeInText(text[1:])
-        return datetime(year, month, day, hour, minutes).strftime("%A, %d %B %Y %I:%M %p")
+        return "True"
     except:
         return timeInText(text[1:])
 
-print(timeInText("cw16:23-12-10-2012wernirf"))
+print(timeInText("cw6:23-12-10-2012wernirf"))
