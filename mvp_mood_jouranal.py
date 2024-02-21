@@ -12,3 +12,6 @@ moods = {
     "Anger": {"Furious", "Annoyed", "Irritated"},
 }
 
+def mood_journal(note):
+    with open('notes.txt', 'a') as file:
+        file.write(str(note) + '\n')
