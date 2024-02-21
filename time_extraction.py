@@ -2,7 +2,7 @@ from datetime import datetime
 
 #this function takes a string and returns True as text if the string is a valid time in the format "hh:mm-dd-mm-yyyy" otherwise it returns the time in the wanted format
 def timeInText(textv):
-    text = textv.strip()
+    text = textv.replace(' ', '')
     if len(text) < 16:
         current_time = datetime.now()
         hour = str(current_time.hour)
@@ -11,7 +11,7 @@ def timeInText(textv):
         month = str(current_time.month)
         year = str(current_time.year)
         return hour+":"+minutes+"-"+day+"-"+month+"-"+year
-    sliced =text[1:18]
+    sliced =text[0:16]
     try:
         hourandminutes, day, month, year = sliced.split('-')
         hour,minutes = hourandminutes.split(':')
