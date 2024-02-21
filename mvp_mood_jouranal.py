@@ -25,27 +25,33 @@ def mood_journal(note):
 
 
 # Create users Db
-users_db = TinyDB('users_db.json')
-notes_db = TinyDB('notes_db.json')
-records_db = TinyDB('records_db.json')
+users_db = TinyDB("users_db.json")
+notes_db = TinyDB("notes_db.json")
+records_db = TinyDB("records_db.json")
+
 
 # write users to db
 def add_user(name):
-    doc_id = users_db.insert({'name': name})
-    users_db.update({'_id': doc_id}, doc_ids=[doc_id])
+    doc_id = users_db.insert({"name": name})
+    users_db.update({"_id": doc_id}, doc_ids=[doc_id])
     return doc_id
+
 
 # write notes to db
 def add_note(user_id, note):
-    doc_id = notes_db.insert({'user_id': user_id, 'note': note})
-    notes_db.update({'_id': doc_id}, doc_ids=[doc_id])
+    doc_id = notes_db.insert({"user_id": user_id, "note": note})
+    notes_db.update({"_id": doc_id}, doc_ids=[doc_id])
     return doc_id
+
 
 # write records to db
 def add_record(user_id, note_id, mood, date):
-    doc_id = records_db.insert({'user_id': user_id, 'note_id': note_id, 'mood': mood, 'date': date})
-    records_db.update({'_id': doc_id}, doc_ids=[doc_id])
+    doc_id = records_db.insert(
+        {"user_id": user_id, "note_id": note_id, "mood": mood, "date": date}
+    )
+    records_db.update({"_id": doc_id}, doc_ids=[doc_id])
     return doc_id
+
 
 def save_note_details_to_DB(user_id):
     note = take_input()
@@ -56,8 +62,8 @@ def save_note_details_to_DB(user_id):
         note_time = te.timeInText(note)
         add_record(user_id, note_id, mood, note_time)
 
-save_note_details_to_DB(0)
 
+save_note_details_to_DB(0)
 
 
 # Fetch all documents from each database
@@ -70,9 +76,9 @@ print("Notes:", all_notes)
 print("Tasks:", all_records)
 
 
-date = datetime.datetime.now()
-t = date.strftime("%H:%M-%d-%m-%y")
-add_record(2, note_id=1, mood="Happy", date=str(t))
+# date = datetime.datetime.now()
+# t = date.strftime("%H:%M-%d-%m-%y")
+# add_record(2, note_id=1, mood="Happy", date=str(t))
 
 
 def compare_entry_with_last():
@@ -82,10 +88,6 @@ def compare_entry_with_last():
         print(all_records[length - 1]["date"])
         new_record_date = all_records[length - 1]["date"]
         last_record_date = all_records[length - 2]["date"]
-        
-
-
-
 
         date1 = te.convert_to_DaterTime(new_record_date)
         date2 = te.convert_to_DaterTime(last_record_date)
@@ -95,4 +97,4 @@ def compare_entry_with_last():
     return True
 
 
-compare_entry_with_last()
+print(compare_entry_with_last())
